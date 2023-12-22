@@ -1,7 +1,15 @@
 README.md
 setup.py
+fnk_auth/__init__.py
+fnk_auth/admin.py
+fnk_auth/apps.py
+fnk_auth/models.py
+fnk_auth/tests.py
+fnk_auth/urls.py
+fnk_auth/views.py
 fnk_auth.egg-info/PKG-INFO
 fnk_auth.egg-info/SOURCES.txt
 fnk_auth.egg-info/dependency_links.txt
 fnk_auth.egg-info/requires.txt
 fnk_auth.egg-info/top_level.txt
+fnk_auth/migrations/__init__.py
