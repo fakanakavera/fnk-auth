@@ -1,0 +1,7 @@
+README.md
+setup.py
+fnk_auth.egg-info/PKG-INFO
+fnk_auth.egg-info/SOURCES.txt
+fnk_auth.egg-info/dependency_links.txt
+fnk_auth.egg-info/requires.txt
+fnk_auth.egg-info/top_level.txt
