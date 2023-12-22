@@ -8,3 +8,4 @@ All notable changes to this project will be documented in this file.
 
 - tags in github
 - folder and files for fnk_auth
+- added workspace in vscode
