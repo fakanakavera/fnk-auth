@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: fnk-auth
-Version: 0.0.1.1
+Version: 0.0.1.2
 Summary: A implementation of a robust and secure user authentication system for our application. This system will manage user identities, facilitate secure access to the application, and provide a seamless user experience for registration, login, and account management.
 Home-page: https://github.com/fakanakavera/fnk-auth.git
 Author: FakaNaKavera
