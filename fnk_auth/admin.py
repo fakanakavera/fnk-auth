@@ -5,11 +5,12 @@ from .models import CustomUser
 
 class CustomUserAdmin(BaseUserAdmin):
     model = CustomUser
-    list_display = ['email', 'is_staff', 'is_active']
-    list_filter = ['email', 'is_staff', 'is_active']
+    list_display = ['email', 'is_staff', 'is_active', 'email_verified']
+    list_filter = ['email', 'is_staff', 'is_active', 'email_verified']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
+        ('Permissions', {
+         'fields': ('is_staff', 'is_active', 'email_verified')}),
     )
     add_fieldsets = (
         (None, {

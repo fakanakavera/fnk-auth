@@ -3,6 +3,8 @@ from . import views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
+    path('verify/<uidb64>/<token>',
+         views.email_verify, name='email-verify'),
     path('change-password/', views.change_password, name='change_password'),
     path('get_user_email/', views.get_user_email, name='get_user_email'),
     path('items/', views.ItemListView.as_view(), name='item-list'),
