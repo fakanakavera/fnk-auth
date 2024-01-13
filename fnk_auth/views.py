@@ -4,15 +4,9 @@ from .serializers import UserSerializer
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from django.middleware.csrf import get_token
-from django.http import JsonResponse
+from django.contrib.auth import authenticate
 
 import time
-
-
-@api_view(['GET'])
-def get_csrf_token(request):
-    return JsonResponse({'csrfToken': get_token(request)})
 
 
 @api_view(['POST'])
@@ -24,6 +18,18 @@ def register(request):
     else:
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def change_password(request):
+    user = authenticate(email=request.user.email,
+                        password=request.data['oldPassword'])
+    if not user:
+        return Response({'error': 'Wrong password'}, status=status.HTTP_400_BAD_REQUEST)
+
+    user.set_password(request.data['newPassword'])
+    user.save()
+    return Response({'success': 'Password changed successfully'})
 
 
 @api_view(['GET'])
