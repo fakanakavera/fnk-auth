@@ -39,3 +39,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class UserAccountDetails(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    nick_name = models.CharField(max_length=50)
+
+    def __str__(self) -> str:
+        return super().__str__()

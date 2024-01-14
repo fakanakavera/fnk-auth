@@ -1,3 +1,4 @@
+from .models import UserAccountDetails
 from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import UserSerializer
@@ -15,7 +16,6 @@ from email.mime.multipart import MIMEMultipart
 from django.conf import settings
 from django.utils.http import urlsafe_base64_decode
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 from django.contrib.auth import get_user_model
 
 import time
@@ -34,6 +34,16 @@ def register(request):
     else:
         print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def change_nickname(request):
+    user = request.user
+    user_account_details = UserAccountDetails.objects.get_or_create(
+        user=user)[0]
+    user_account_details.nick_name = request.data['nickname']
+    user_account_details.save()
+    return Response({'success': 'Nickname changed successfully'})
 
 
 @api_view(['POST'])
