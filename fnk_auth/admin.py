@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import CustomUser
+from .models import CustomUser, UserAccountDetails
 
 
 class CustomUserAdmin(BaseUserAdmin):
@@ -22,4 +22,13 @@ class CustomUserAdmin(BaseUserAdmin):
     ordering = ('email',)
 
 
+class UserAccountDetailsAdmin(admin.ModelAdmin):
+    model = UserAccountDetails
+    list_display = ['user', 'nick_name']
+    list_filter = ['user', 'nick_name']
+    search_fields = ('user', 'nick_name')
+    ordering = ('user',)
+
+
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(UserAccountDetails, UserAccountDetailsAdmin)

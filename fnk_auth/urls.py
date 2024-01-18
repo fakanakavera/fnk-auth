@@ -1,16 +1,18 @@
 from django.urls import path
-from . import views
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .views.email import email_verify
+from .views.auth import register, change_password, get_user_email, CustomTokenObtainPairView
+from .views.accounts import change_nickname
+from .views.test import ItemListView
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
-    path('change-nickname/', views.change_nickname, name='change_nickname'),
-    path('verify/<uidb64>/<token>',
-         views.email_verify, name='email-verify'),
-    path('change-password/', views.change_password, name='change_password'),
-    path('get_user_email/', views.get_user_email, name='get_user_email'),
-    path('items/', views.ItemListView.as_view(), name='item-list'),
+    path('change-nickname/', change_nickname, name='change_nickname'),
+    path('verify/<uidb64>/<token>', email_verify, name='email-verify'),
+    path('change-password/', change_password, name='change_password'),
+    path('register/', register, name='register'),
+    path('get_user_email/', get_user_email, name='get_user_email'),
+    path('items/', ItemListView.as_view(), name='item-list'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('register/', views.register, name='register')
+    path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     # ... other URL patterns for fnk_auth ...
 ]
