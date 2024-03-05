@@ -3,15 +3,14 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from .utils import get_or_create_user_account_details
 
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def change_nickname(request):
     try:
-        user = request.user
-        user_account_details = UserAccountDetails.objects.get_or_create(
-            user=user)[0]
+        user_account_details = get_or_create_user_account_details(request.user)
         user_account_details.nick_name = request.data['nickname']
         user_account_details.save()
         return Response({'success': 'Nickname changed successfully'})
