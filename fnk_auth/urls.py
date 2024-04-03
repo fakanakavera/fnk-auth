@@ -1,8 +1,23 @@
 from django.urls import path
-from . import views
+from .views.email import email_verify
+from .views.auth import register, change_password, get_user_email, CustomTokenObtainPairView
+from .views.accounts import change_nickname
+from .views.test import ItemListView
+from .views.database import DropdownUpdateAPI, GetDropdownItems
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
-    path('login/', views.login_view, name='login'),
-    path('logout/', views.logout_view, name='logout'),
+    path('change-nickname/', change_nickname, name='change_nickname'),
+    path('verify/<uidb64>/<token>', email_verify, name='email-verify'),
+    path('change-password/', change_password, name='change_password'),
+    path('register/', register, name='register'),
+    path('get_user_email/', get_user_email, name='get_user_email'),
+    path('items/', ItemListView.as_view(), name='item-list'),
+    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('dropdown-update/<str:type_name>/<int:sent_id>',
+         DropdownUpdateAPI.as_view(), name='dropdown-update'),
+    path('get-dropdown-items/<str:type_name>',
+         GetDropdownItems.as_view(), name='get-dropdown-items'),
     # ... other URL patterns for fnk_auth ...
 ]
