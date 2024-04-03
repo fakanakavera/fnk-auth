@@ -17,7 +17,7 @@ def check_recaptcha(request):
 
     # Verify reCAPTCHA response with Google
     data = {
-        'secret': '6Lf4WFQpAAAAAK0rHS5QVQxLJ9bVOPV6vh2X9ku4',
+        'secret': '6Lc5V60pAAAAAOH1x4J8IebcDPoyb1jc4WdE__Va',
         'response': recaptcha_response
     }
     result = requests.post(
