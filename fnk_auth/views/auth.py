@@ -53,7 +53,6 @@ def register(request):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response({'error': 'Email could not be sent'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     else:
-        print(serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 

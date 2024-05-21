@@ -3,7 +3,6 @@ from .views.email import email_verify
 from .views.auth import register, change_password, get_user_email, CustomTokenObtainPairView
 from .views.accounts import change_nickname
 from .views.test import ItemListView
-from .views.database import DropdownUpdateAPI, GetDropdownItems
 from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
@@ -15,9 +14,4 @@ urlpatterns = [
     path('items/', ItemListView.as_view(), name='item-list'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('dropdown-update/<str:type_name>/<int:sent_id>',
-         DropdownUpdateAPI.as_view(), name='dropdown-update'),
-    path('get-dropdown-items/<str:type_name>',
-         GetDropdownItems.as_view(), name='get-dropdown-items'),
-    # ... other URL patterns for fnk_auth ...
 ]
