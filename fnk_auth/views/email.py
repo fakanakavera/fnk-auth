@@ -44,7 +44,7 @@ def send_verification_email(user):
     token = default_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     subject = 'Verify your account'
-    message = render_to_string('email_body.txt', {
+    message = render_to_string('/email_body.txt', {
         'user': user,
         'uid': uid,
         'token': token,
