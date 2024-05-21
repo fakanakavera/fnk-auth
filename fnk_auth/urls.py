@@ -14,5 +14,4 @@ urlpatterns = [
     path('items/', ItemListView.as_view(), name='item-list'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # ... other URL patterns for fnk_auth ...
 ]
