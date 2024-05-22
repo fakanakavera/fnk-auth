@@ -42,9 +42,10 @@ def send_email(subject, message, recipient_email):
 
 def send_verification_email(user):
     token = default_token_generator.make_token(user)
+    print(f"user.pk: {user.pk}")
     uid = urlsafe_base64_encode(force_bytes(user.pk))
     subject = 'Verify your account'
-    message = render_to_string('/email_body.txt', {
+    message = render_to_string('fnk_auth/email_body.txt', {
         'user': user,
         'uid': uid,
         'token': token,
@@ -55,9 +56,11 @@ def send_verification_email(user):
 def email_verify(request, uidb64, token):
     try:
         # Decode the uid
+        print("email_verify")
         uid = urlsafe_base64_decode(uidb64).decode()
+        print(f"uid: {uid}")
         user = get_object_or_404(get_user_model(), pk=uid)
-
+        print(f"user: {user}")
         # Verify the token
         if default_token_generator.check_token(user, token):
             # Perform the email verification logic
@@ -68,15 +71,14 @@ def email_verify(request, uidb64, token):
             return HttpResponse("""
                 <html>
                     <head>
-                        <script type="text/javascript">
-                            window.location.href = "http://localhost:3000/items"; // Replace with your React app's URL
-                        </script>
+                        <title>Email Verification</title>
                     </head>
                     <body>
-                        If you are not redirected automatically, <a href="http://localhost:3000/items">click here</a>.
+                        <h1>Email Verification Successful</h1>
+                        <p>Your email has been successfully verified. You can close this page now.</p>
                     </body>
                 </html>
-                """)
+            """)
         else:
             return HttpResponse("Invalid verification link")
 
