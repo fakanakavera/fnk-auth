@@ -34,9 +34,6 @@ def check_recaptcha(request):
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     def post(self, request, *args, **kwargs):
-        print(request.data)
-        print(args)
-        print(kwargs)
         # Check reCAPTCHA
         # if check_recaptcha(request).status_code != 200:
         #     return check_recaptcha(request)
