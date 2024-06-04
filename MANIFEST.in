@@ -1,2 +1,2 @@
 # Include all files in the templates/fnk_auth directory
-recursive-include fnk_auth/templates/fnk_auth *.*
+recursive-include fnk_auth/templates/fnk_auth/*.*
