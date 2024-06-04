@@ -1,3 +1,4 @@
+MANIFEST.in
 README.md
 setup.py
 fnk_auth/__init__.py
@@ -15,6 +16,7 @@ fnk_auth.egg-info/requires.txt
 fnk_auth.egg-info/top_level.txt
 fnk_auth/migrations/0001_initial.py
 fnk_auth/migrations/__init__.py
+fnk_auth/templates/fnk_auth/email_body.txt
 fnk_auth/views/__init__.py
 fnk_auth/views/accounts.py
 fnk_auth/views/auth.py
