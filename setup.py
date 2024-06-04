@@ -5,6 +5,9 @@ setup(
     version='0.0.1.2',
     packages=find_packages(),
     include_package_data=True,
+    package_data={
+        '': ['templates/fnk_auth/*.*'],  # Adjust the path as necessary
+    },
     description='A implementation of a robust and secure user authentication system for our application. This system will manage user identities, facilitate secure access to the application, and provide a seamless user experience for registration, login, and account management.',
     long_description=open('README.md').read(),
     url='https://github.com/fakanakavera/fnk-auth.git',
